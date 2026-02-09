@@ -12,6 +12,7 @@ pretrained
 runs/
 runs
 wandb/
+ckpt/
 
 torch_compile_debug
 test_aug.py
