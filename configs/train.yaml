@@ -10,7 +10,7 @@ model:
     finetune_unet: true
     finetune_projection: false
     drop_conditions: false
-    clip_image_encoder_path: /memory/a100/pre_trained_sdxl/ViT-L-14.pt
+    clip_image_encoder_path: ./ckpt/ViT-L-14.pt
     conditioning_key: hybrid  
     conditioning_type: input_image 
 
