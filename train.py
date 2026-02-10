@@ -1,6 +1,7 @@
 import argparse, os, sys
 import numpy as np
 import time
+import datetime
 import torch
 import torch.nn as nn
 import torchvision
@@ -265,8 +266,9 @@ if __name__ == "__main__":
 
     ###################logger#####################
     # default logger configs
-    default_logger_cfg = {"target": "pytorch_lightning.loggers.TensorBoardLogger",
-                          "params": {"save_dir": logdir, "name": "tensorboard_logs", }}
+    now = datetime.datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    default_logger_cfg = {"target": "pytorch_lightning.loggers.WandbLogger",
+                          "params": {"save_dir": logdir, "name": now, "project": "CA3D-Diff"}}
     logger_cfg = OmegaConf.create(default_logger_cfg)
     logger = instantiate_from_config(logger_cfg)
 
