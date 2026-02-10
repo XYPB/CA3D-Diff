@@ -282,14 +282,14 @@ if __name__ == "__main__":
     # add callback which sets up log directory
     default_callbacks_cfg = {
         "setup_callback": {
-            "target": "train_syncdreamer.SetupCallback",
+            "target": "train.SetupCallback",
             "params": {"resume": opt.resume, "logdir": logdir, "ckptdir": ckptdir, "cfgdir": cfgdir, "config": config}
         },
         "learning_rate_logger": {
-            "target": "train_syncdreamer.LearningRateMonitor",
+            "target": "train.LearningRateMonitor",
             "params": {"logging_interval": "step"}
         },
-        "cuda_callback": {"target": "train_syncdreamer.CUDACallback"},
+        "cuda_callback": {"target": "train.CUDACallback"},
     }
     callbacks_cfg = OmegaConf.merge(default_callbacks_cfg, get_optional_dict("callbacks", lightning_config))
     callbacks_cfg['model_ckpt'] = modelckpt_cfg  # add checkpoint
