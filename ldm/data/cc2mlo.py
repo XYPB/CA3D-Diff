@@ -32,8 +32,8 @@ class CC2MLODataset(pl.LightningDataModule):
                           batch_size=self.batch_size, num_workers=self.num_workers, shuffle=False)
 
 class CustomDataset(Dataset):
-    def __init__(self,img_dir='/memory/a100/Datasets/zero123',train_val_test='train'):
-        self.cc_img_root = os.path.join(img_dir,'pair_images/CC',train_val_test)
+    def __init__(self,img_dir='./data/vindr-1.0.0-paired',train_val_test='train'):
+        self.cc_img_root = os.path.join(img_dir,'CC',train_val_test)
         self.images=os.listdir(self.cc_img_root)
         self.image_transform = transforms.Compose([
             transforms.Resize((256, 256)),  # 保持 128x128 大小

@@ -1,6 +1,6 @@
 __pycache__
 logs
-data
+./data
 .vscode
 lightning_logs
 scripts/slurm*
