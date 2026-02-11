@@ -35,6 +35,7 @@ python generate.py \
     --cfg configs/train.yaml \
     --ckpt ckpt/checkpoint/train/step=00039999.ckpt \
     --input CC/test \
+    --output runs/cc2mlo_test \
     --cfg_scale 3.0 \
     --device cuda:0 \
     --batch_size 16 \
@@ -44,6 +45,7 @@ python generate.py \
     --cfg configs/train.yaml \
     --ckpt ckpt/checkpoint/train/step=00039999.ckpt \
     --input MLO/test \
+    --output runs/mlo2cc_test \
     --cfg_scale 3.0 \
     --device cuda:0 \
     --batch_size 16 \
