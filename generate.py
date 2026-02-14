@@ -51,7 +51,7 @@ def main():
     # prepare data
     names=os.listdir(flags.input)
     print('test data:',len(names))
-    save_dir=flags.ckpt.replace('a100','lixin').replace('checkpoint','test_results').replace('.ckpt',f'_scale{flags.cfg_scale}')
+    save_dir=flags.output
     
     image_transform = transforms.Compose([
             transforms.Resize((256, 256)),  # 保持 128x128 大小
