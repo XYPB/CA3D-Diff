@@ -49,4 +49,3 @@ python generate.py \
     --cfg_scale 3.0 \
     --device cuda:0 \
     --batch_size 16 \
-    --cc2mlo \
