@@ -45,7 +45,7 @@ model:
 data:
   target: ldm.data.cc2mlo.CC2MLODataset
   params:
-    batch_size: 4 # batch size for a single gpu
+    batch_size: 32 # batch size for a single gpu
     num_workers: 8
     data_dir: ./data/rsna-mammo-paired
 
