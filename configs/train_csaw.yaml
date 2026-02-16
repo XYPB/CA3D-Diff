@@ -47,7 +47,7 @@ data:
   params:
     batch_size: 32 # batch size for a single gpu
     num_workers: 8
-    data_dir: ./data/vindr-1.0.0-paired
+    data_dir: ./data/CSAW-CC-paired
 
 lightning:
   modelcheckpoint:
@@ -61,3 +61,4 @@ lightning:
     val_check_interval: 50000000000 # we will run validation every 1k steps, the validation will output images to <log_dir>/<images>/val
     num_sanity_val_steps: 0
     check_val_every_n_epoch: null
+    max_steps: 40000
