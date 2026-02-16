@@ -17,6 +17,9 @@
 #SBATCH --output=logs/%x_%j.out
 
 
+set -e
+
+git pull
 module load miniconda
 conda env list
 sleep 10
