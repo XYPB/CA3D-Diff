@@ -7,10 +7,11 @@
 #SBATCH --mail-type=END
 #SBATCH --mail-user=yuexi.du@yale.edu
 
+#SBATCH --account prio_dvornek
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=6
 #SBATCH --mem-per-cpu=15g
-#SBATCH --partition gpu
+#SBATCH --partition priority_gpu
 #SBATCH --nodes 1
 #SBATCH --gpus a100:1
 #SBATCH --constraint a100-80g
