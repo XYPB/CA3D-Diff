@@ -47,7 +47,7 @@ data:
   params:
     batch_size: 32 # batch size for a single gpu
     num_workers: 8
-    data_dir: ./data/CSAW-CC-paired
+    data_dir: ./data/csaw-paired
 
 lightning:
   modelcheckpoint:
