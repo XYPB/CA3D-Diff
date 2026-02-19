@@ -28,16 +28,16 @@ conda activate CA3D-Diff
 conda env list
 
 
-python train.py -b configs/train_rsna.yaml \
-    --finetune_from ckpt/sd-image-conditioned-v2.ckpt \
-    -l ckpt/log_rsna  \
-    -c ckpt/checkpoint_rsna \
-    --gpus 0,
+# python train.py -b configs/train_rsna.yaml \
+#     --finetune_from ckpt/sd-image-conditioned-v2.ckpt \
+#     -l ckpt/log_rsna  \
+#     -c ckpt/checkpoint_rsna \
+#     --gpus 0,
 
 
 python generate.py \
     --cfg configs/train_rsna.yaml \
-    --ckpt ckpt/checkpoint_rsna/train/step=00039999.ckpt \
+    --ckpt ckpt/checkpoint_rsna/train_rsna/step=00039999.ckpt \
     --input data/rsna-mammo-paired/CC/test \
     --output runs/cc2mlo_test_rsna \
     --cfg_scale 3.0 \
@@ -47,7 +47,7 @@ python generate.py \
 
 python generate.py \
     --cfg configs/train_rsna.yaml \
-    --ckpt ckpt/checkpoint_rsna/train/step=00039999.ckpt \
+    --ckpt ckpt/checkpoint_rsna/train_rsna/step=00039999.ckpt \
     --input data/rsna-mammo-paired/MLO/test \
     --output runs/mlo2cc_test_rsna \
     --cfg_scale 3.0 \
