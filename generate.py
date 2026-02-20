@@ -6,6 +6,7 @@ import numpy as np
 import torch
 from omegaconf import OmegaConf
 from skimage.io import imsave
+from tqdm import tqdm
 
 from ldm.models.diffusion.main_models import SyncDDIMSampler
 from ldm.util import instantiate_from_config, prepare_inputs
@@ -75,7 +76,7 @@ def main():
     print('save_dir:',save_dir)
     os.makedirs(save_dir, exist_ok=True)
     n=len(names)
-    for i in range(0,n,B):
+    for i in tqdm(range(0,n,B)):
         target_images=[]
         for j in range(i,min(i+B,n)):
             cc_img_path = os.path.join(flags.input, names[j])
