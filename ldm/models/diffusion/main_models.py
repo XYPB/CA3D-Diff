@@ -502,7 +502,9 @@ class SyncMultiviewDiffusion(pl.LightningModule):
         targets=input_info['target_image']
         
         image_cond = []
-        for bi in range(8):
+        # NOTE: `B` can be smaller than 8 (e.g. last batch or a small `output_num`).
+        # Clamp the loop to avoid indexing out of range.
+        for bi in range(min(B, 8)):
             img_pr_ = concat_images_list(process(clip_inputs[bi].permute(1, 2, 0)),*[process(targets[bi].permute(1, 2, 0)),process(x_sample[bi].permute(1, 2, 0))])
             image_cond.append(img_pr_)
 

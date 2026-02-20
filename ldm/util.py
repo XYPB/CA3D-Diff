@@ -30,7 +30,9 @@ def pil_rectangle_crop(im):
         top = 0
         bottom = height
         left = (width - height) / 2
-        bottom = (width + height) / 2
+        right = (width + height) / 2
+        # NOTE: When width > height, we crop a centered square region. The original code
+        # accidentally overwrote `bottom` and never set `right`, which would break cropping.
 
     # Crop the center of the image
     im = im.crop((left, top, right, bottom))

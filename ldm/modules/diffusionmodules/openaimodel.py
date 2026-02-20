@@ -581,9 +581,16 @@ class UNetModel(nn.Module):
                                 num_heads=num_heads,
                                 num_head_channels=dim_head,
                                 use_new_attention_order=use_new_attention_order,
-                            ) if not use_spatial_transformer else DualInputSpatialTransformer(
-                                ch, num_heads, dim_head, depth=transformer_depth, context_dim=context_dim,
-                                disable_self_attn=disabled_sa,column_decay=True
+                            ) if not use_spatial_transformer else (
+                                # NOTE: Potential config/implementation mismatch: when `column_decay=True`,
+                                # DualInputSpatialTransformer's context branch assumes a 4-channel feature map
+                                # (e.g. VAE latent) and projects it to `inner_dim`. If the config sets
+                                # `context_dim` to a token embedding size such as 768, it may not match the
+                                # actual context token dimension used by attention.
+                                DualInputSpatialTransformer(
+                                    ch, num_heads, dim_head, depth=transformer_depth, context_dim=context_dim,
+                                    disable_self_attn=disabled_sa, column_decay=True,
+                                )
                             )
                         )
                 self.input_blocks.append(TimestepEmbedSequential(*layers))
