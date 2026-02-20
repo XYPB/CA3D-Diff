@@ -51,9 +51,6 @@ def main():
 
     # prepare data
     names=os.listdir(flags.input)
-
-    names = random.sample(names, min(flags.sample_num, len(names)))
-
     print('test data:',len(names))
     save_dir=flags.output
     
