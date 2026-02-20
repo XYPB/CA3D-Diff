@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 
+import random
 import numpy as np
 import torch
 from omegaconf import OmegaConf
@@ -29,7 +30,7 @@ def main():
     parser.add_argument('--output', type=str, required=True)
     parser.add_argument('--input', type=str, required=True)
 
-    parser.add_argument('--sample_num', type=int, default=4)
+    parser.add_argument('--sample_num', type=int, default=1000)
     parser.add_argument('--cfg_scale', type=float, default=2.0)
     parser.add_argument('--batch_view_num', type=int, default=2)
     parser.add_argument('--seed', type=int, default=6033)
@@ -50,6 +51,9 @@ def main():
 
     # prepare data
     names=os.listdir(flags.input)
+
+    names = random.sample(names, min(flags.sample_num, len(names)))
+
     print('test data:',len(names))
     save_dir=flags.output
     
