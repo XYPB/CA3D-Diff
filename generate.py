@@ -81,7 +81,18 @@ def main():
         for j in range(i,min(i+B,n)):
             cc_img_path = os.path.join(flags.input, names[j])
             cc_image= image_transform(Image.open(cc_img_path).convert("RGB")).to(flags.device)
-            mlo_img_path = cc_img_path.replace('CC','MLO')
+            cc_p = Path(cc_img_path)
+            # NOTE: Avoid doing a global string replace (e.g. replacing 'CC' inside study IDs or filenames).
+            # We only want to swap the view folder/name from CC -> MLO under the expected dataset layout.
+            if 'CC' in cc_p.parts:
+                parts = list(cc_p.parts)
+                idx = parts.index('CC')
+                parts[idx] = 'MLO'
+                mlo_img_path = str(Path(*parts))
+            else:
+                mlo_img_path = cc_img_path
+                if 'CC' in mlo_img_path:
+                    mlo_img_path = mlo_img_path.replace('CC', 'MLO')
             mlo_image= image_transform(Image.open(mlo_img_path).convert("RGB")).to(flags.device)
             target_image=torch.stack([cc_image,mlo_image], 0)
             target_images.append(target_image)

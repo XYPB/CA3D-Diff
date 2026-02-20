@@ -26,6 +26,8 @@ def find_paired_images(df):
         cc_rows = group[group['view_position'] == 'CC']
         mlo_rows = group[group['view_position'] == 'MLO']
         
+        # NOTE: This is a strict pairing rule (exactly one CC and one MLO per study/laterality).
+        # Studies with multiple CC/MLO images will be skipped, which may significantly reduce data.
         if len(cc_rows) == 1 and len(mlo_rows) == 1:
             cc_row = cc_rows.iloc[0]
             mlo_row = mlo_rows.iloc[0]

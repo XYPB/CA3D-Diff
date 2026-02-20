@@ -312,7 +312,7 @@ if __name__ == "__main__":
 
     ####################lr#####################
     bs, base_lr = config.data.params.batch_size, config.model.base_learning_rate
-    accumulate_grad_batches = trainer_config.accumulate_grad_batches if hasattr(trainer_config, "trainer_config") else 1
+    accumulate_grad_batches = getattr(trainer_config, "accumulate_grad_batches", 1)
     rank_zero_print(f"accumulate_grad_batches = {accumulate_grad_batches}")
     model.learning_rate = base_lr
     rank_zero_print("++++ NOT USING LR SCALING ++++")
