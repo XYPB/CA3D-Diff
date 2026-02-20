@@ -42,7 +42,7 @@ python generate.py \
     --output runs/cc2mlo_test_rsna \
     --cfg_scale 3.0 \
     --device cuda:0 \
-    --batch_size 16 \
+    --batch_size 32 \
     --cc2mlo \
 
 python generate.py \
@@ -52,4 +52,4 @@ python generate.py \
     --output runs/mlo2cc_test_rsna \
     --cfg_scale 3.0 \
     --device cuda:0 \
-    --batch_size 16 \
+    --batch_size 32 \
