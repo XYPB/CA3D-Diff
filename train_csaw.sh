@@ -38,7 +38,7 @@ conda env list
 python generate.py \
     --cfg configs/train_csaw.yaml \
     --ckpt ckpt/checkpoint_csaw/train_csaw/step=00039999.ckpt \
-    --input data/CSAW-CC-paired/CC/test \
+    --input ./data/csaw-paired/CC/test \
     --output runs/cc2mlo_test_csaw \
     --cfg_scale 3.0 \
     --device cuda:0 \
@@ -48,7 +48,7 @@ python generate.py \
 python generate.py \
     --cfg configs/train_csaw.yaml \
     --ckpt ckpt/checkpoint_csaw/train_csaw/step=00039999.ckpt \
-    --input data/CSAW-CC-paired/MLO/test \
+    --input ./data/csaw-paired/MLO/test \
     --output runs/mlo2cc_test_csaw \
     --cfg_scale 3.0 \
     --device cuda:0 \
